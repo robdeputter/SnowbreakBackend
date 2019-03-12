@@ -15,14 +15,6 @@ namespace Snowboard_WEB4.Data.Mappers
             builder.ToTable("Gebied");
             builder.HasKey(g => g.Id);
 
-            /*
-            public int Id { get; set; }
-            public string Naam { get; set; }
-            public string Land { get; set; }
-            public string Coördinaten { get; set; }
-            public int AantalKmPiste { get; set; }
-            public int HoogteGebied { get; set; }
-            */
             //props
             builder.Property(g => g.Naam)
                 .IsRequired(true)
@@ -35,7 +27,10 @@ namespace Snowboard_WEB4.Data.Mappers
             builder.Property(g => g.HoogteGebied)
                 .IsRequired(true);
 
-            builder.Property(g => g.Coördinaten)
+            builder.Property(g => g.LengteGraad)
+                .IsRequired(true);
+
+            builder.Property(g => g.Breedtegraad)
                 .IsRequired(true);
 
             builder.Property(g => g.AantalKmPiste)

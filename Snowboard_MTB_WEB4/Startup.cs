@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Snowboard_MTB_WEB4.Data;
+using Snowboard_WEB4.Data;
 
 namespace Snowboard_MTB_WEB4
 {
@@ -28,14 +29,14 @@ namespace Snowboard_MTB_WEB4
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SnowbreakDbContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("")));
+              options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddScoped<SnowBreakDataInitializer>();
+            services.AddScoped<SnowbreakDataInitializer>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,SnowbreakDataInitializer sbdInit)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +50,7 @@ namespace Snowboard_MTB_WEB4
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            sbdInit.InitializeData();
         }
     }
 }

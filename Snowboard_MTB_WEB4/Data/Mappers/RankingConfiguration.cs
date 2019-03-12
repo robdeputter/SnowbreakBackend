@@ -22,11 +22,6 @@ namespace Snowboard_WEB4.Data.Mappers
 
             builder.Property(r => r.Continent)
                 .IsRequired(true);
-
-            
-
-            
-                
         }
     }
 }

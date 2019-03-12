@@ -1,43 +1,51 @@
-﻿using Snowboard_MTB_WEB4.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Snowboard_MTB_WEB4.Data;
+using Snowboard_MTB_WEB4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Snowboard_MTB_WEB4.Data
+namespace Snowboard_WEB4.Data.Repositories
 {
     public class EvenementRepository : IEvenementRepository
     {
-        
+        private DbSet<Evenement> _evenementen;
+        private SnowbreakDbContext _context;
 
+        public EvenementRepository(SnowbreakDbContext context)
+        {
+            _context = context;
+            _evenementen = context.Evenements;
+        }
         public void Add(Evenement evenement)
         {
-            
+            _evenementen.Add(evenement);
         }
 
         public void Delete(Evenement evenement)
         {
-            throw new NotImplementedException();
+            _evenementen.Remove(evenement);
         }
 
         public IEnumerable<Evenement> GetAll()
         {
-            throw new NotImplementedException();
+            return _evenementen.OrderBy(e => e.Naam).ToList();
         }
 
         public Evenement GetById(int id)
         {
-            throw new NotImplementedException();
+            return _evenementen.SingleOrDefault(e => e.Id == id);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
         public void Update(Evenement evenement)
         {
-            throw new NotImplementedException();
+            _evenementen.Update(evenement);
         }
     }
 }

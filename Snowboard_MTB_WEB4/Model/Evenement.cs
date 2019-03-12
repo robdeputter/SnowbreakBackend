@@ -13,14 +13,17 @@ namespace Snowboard_MTB_WEB4.Model
         public string Naam { get; set; }
         public string Beschrijving { get; set; }
         public DateTime StartDatum { get; set; }
-        public DateTime EindDatum { get; set; }
+        public DateTime? EindDatum { get; set; }
         public int NrOfDays { get; set; }
         public Gebied Gebied { get; set; }
 
-        
+        protected Evenement()
+        {
+
+        }
 
 
-        public Evenement(string naam, string beschrijving, DateTime startDatum, DateTime eindDatum, Gebied gebied)
+        public Evenement(string naam, string beschrijving, DateTime startDatum, DateTime? eindDatum, Gebied gebied)
         {
             Naam = naam;
             Beschrijving = beschrijving;

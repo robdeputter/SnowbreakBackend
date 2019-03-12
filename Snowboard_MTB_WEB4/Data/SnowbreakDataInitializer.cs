@@ -21,7 +21,7 @@ namespace Snowboard_WEB4.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
-                Gebied gebied = new Gebied("Val Thorens", "Frankrijk", "45.292165498 6.574664368", 86, 2300);
+                Gebied gebied = new Gebied("Val Thorens", "Frankrijk", "45.292165498", "6.574664368", 86, 2300);
             }
         }
 

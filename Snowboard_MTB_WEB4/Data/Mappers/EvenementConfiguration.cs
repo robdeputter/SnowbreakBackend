@@ -33,13 +33,13 @@ namespace Snowboard_WEB4.Data.Mappers
 
             builder.Property(e => e.NrOfDays)
                 .IsRequired(true);
-            
+
             //relaties
             builder.HasOne(e => e.Gebied)
                     .WithMany()
                     .IsRequired(true)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasForeignKey("EvenementId");
+                    .OnDelete(DeleteBehavior.Restrict);
+                    
         }
     }
 }

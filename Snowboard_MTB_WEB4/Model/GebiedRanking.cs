@@ -14,7 +14,7 @@ namespace Snowboard_WEB4.Model
         public Gebied Gebied { get; set; }
         public Ranking Ranking { get; set; }
 
-        public GebiedRanking()
+        protected GebiedRanking()
         {
 
         }

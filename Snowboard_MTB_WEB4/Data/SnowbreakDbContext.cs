@@ -18,15 +18,8 @@ namespace Snowboard_MTB_WEB4.Data
         public DbSet<Gebied> Gebieden { get; set; }
         public DbSet<GebiedRanking> GebiedRankings { get; set; }
 
-        public SnowbreakDbContext(DbContextOptions<SnowbreakDbContext> options) :base(options)
+        public SnowbreakDbContext(DbContextOptions<SnowbreakDbContext> options) : base(options)
         {
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var connectionstring =
-        @"Server=.\SQLEXPRESS;Database=Snowbreak;Integrated Security=True;";
-            optionsBuilder.UseSqlServer(connectionstring);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,11 +29,7 @@ namespace Snowboard_MTB_WEB4.Data
             modelBuilder.ApplyConfiguration(new RankingConfiguration());
             modelBuilder.ApplyConfiguration(new GebiedRankingConfiguration());
             modelBuilder.ApplyConfiguration(new GebiedConfiguration());
-                
-
-           
             
-
         }
     }
 }

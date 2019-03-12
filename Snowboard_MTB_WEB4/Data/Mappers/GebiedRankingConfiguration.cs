@@ -18,13 +18,13 @@ namespace Snowboard_WEB4.Data.Mappers
             builder.HasOne(g => g.Ranking)
                 .WithMany(r => r.Gebieden)
                 .HasForeignKey(r => r.RankingId)
-                .IsRequired(false)
+                .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(g => g.Gebied)
                 .WithMany(geb => geb.Rankings)
                 .HasForeignKey(g => g.GebiedId)
-                .IsRequired(false)
+                .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
 
             

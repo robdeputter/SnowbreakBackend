@@ -16,7 +16,7 @@ namespace Snowboard_MTB_WEB4.Model
         //relaties
         public ICollection<GebiedRanking> Gebieden { get; set; }
 
-        public Ranking()
+        protected Ranking()
         {
             Gebieden = new List<GebiedRanking>();
         }
