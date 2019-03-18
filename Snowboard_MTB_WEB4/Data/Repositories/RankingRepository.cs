@@ -33,6 +33,8 @@ namespace Snowboard_WEB4.Data.Repositories
         {
             return _rankings
                 .Include(r => r.Gebieden)
+                .ThenInclude(gr => gr.Gebied)
+                .ThenInclude(g => g.Rankings)
                 .ToList();
         }
 
@@ -40,6 +42,8 @@ namespace Snowboard_WEB4.Data.Repositories
         {
             return _rankings
                 .Include(r => r.Gebieden)
+                .ThenInclude(gr => gr.Gebied)
+                .ThenInclude(g => g.Rankings)
                 .SingleOrDefault(r => r.Id == id);
         }
 

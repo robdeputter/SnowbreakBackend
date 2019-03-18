@@ -10,6 +10,7 @@ namespace Snowboard_WEB4.Model
     {
         public int GebiedId { get; set; }
         public int RankingId { get; set; }
+        public int Positie { get; set; }
 
         public Gebied Gebied { get; set; }
         public Ranking Ranking { get; set; }
@@ -19,13 +20,15 @@ namespace Snowboard_WEB4.Model
 
         }
 
-        public GebiedRanking(Gebied gebied, Ranking ranking)
+        public GebiedRanking(Gebied gebied, Ranking ranking, int positie)
         {
             Gebied = gebied;
             Ranking = ranking;
 
             GebiedId = gebied.Id;
             RankingId = ranking.Id;
+            Positie = positie;
+            gebied.AddRanking(this);
         }
 
 

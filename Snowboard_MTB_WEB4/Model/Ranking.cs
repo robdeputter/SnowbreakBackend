@@ -29,13 +29,13 @@ namespace Snowboard_MTB_WEB4.Model
 
         }
 
-        public void AddGebied(GebiedRanking gebied)
+        public void AddGebied(Gebied gebied, int positie)
         {
-            Gebieden.Add(gebied);
+            Gebieden.Add(new GebiedRanking(gebied,this, positie));
         }
-        public void RemoveGebied(GebiedRanking gebied)
+        public void RemoveGebied(Gebied gebied)
         {
-            Gebieden.Remove(gebied);
+            Gebieden.Remove(Gebieden.SingleOrDefault(g => g.Gebied == gebied));
         }
     }
 }

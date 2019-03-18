@@ -27,6 +27,9 @@ namespace Snowboard_WEB4.Data.Mappers
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Property(g => g.Positie)
+                .IsRequired(true);
+
             
         }
     }

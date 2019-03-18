@@ -36,5 +36,10 @@ namespace Snowboard_MTB_WEB4.Model
             Rankings = new List<GebiedRanking>();
         }
 
+        public void AddRanking(GebiedRanking ranking)
+        {
+            Rankings.Add(ranking);
+        }
+
     }
 }
