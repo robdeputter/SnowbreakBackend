@@ -31,12 +31,16 @@ namespace Snowboard_WEB4.Data.Repositories
 
         public IEnumerable<Ranking> GetAll()
         {
-            return _rankings.OrderBy(r => r.Naam).ToList();
+            return _rankings
+                .Include(r => r.Gebieden)
+                .ToList();
         }
 
         public Ranking GetById(int id)
         {
-            return _rankings.SingleOrDefault(r => r.Id == id);
+            return _rankings
+                .Include(r => r.Gebieden)
+                .SingleOrDefault(r => r.Id == id);
         }
 
         public void SaveChanges()

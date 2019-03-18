@@ -30,6 +30,13 @@ namespace Snowboard_MTB_WEB4.Model
             StartDatum = startDatum;
             EindDatum = eindDatum;
             Gebied = gebied;
+            NrOfDays = eindDatum == null ? 1 : CountNumberOfDays(StartDatum, EindDatum.Value);
+        }
+        
+        public int CountNumberOfDays(DateTime startDatum, DateTime eindDatum)
+        {
+            TimeSpan verschil = eindDatum - startDatum;
+            return verschil.Days;
         }
 
 

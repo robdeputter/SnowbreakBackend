@@ -11,6 +11,7 @@ namespace Snowboard_MTB_WEB4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     public class EvenementController : ControllerBase
     {
         private readonly IEvenementRepository _evenementRepository;
@@ -24,7 +25,7 @@ namespace Snowboard_MTB_WEB4.Controllers
         public ActionResult<Evenement> GetEvenement(int id)
         {
             Evenement evenement = _evenementRepository.GetById(id);
-            if(evenement != null)
+            if (evenement != null)
             {
                 return evenement;
             }
@@ -41,6 +42,33 @@ namespace Snowboard_MTB_WEB4.Controllers
             _evenementRepository.SaveChanges();
             return CreatedAtAction(nameof(GetEvenement), new { id = evenement.Id }, evenement);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult PutEvenement(int id, Evenement evenement)
+        {
+            if(id != evenement.Id)
+            {
+                return BadRequest();
+            }
+            _evenementRepository.Update(evenement);
+            _evenementRepository.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Evenement> DeleteEvenement(int id)
+        {
+            Evenement evenement = _evenementRepository.GetById(id);
+            if(evenement == null)
+            {
+                return NotFound();
+            }
+            _evenementRepository.Delete(evenement);
+            _evenementRepository.SaveChanges();
+            return evenement;
+        }
+
+
 
         
     }

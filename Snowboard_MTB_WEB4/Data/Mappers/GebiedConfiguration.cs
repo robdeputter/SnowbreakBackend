@@ -24,6 +24,9 @@ namespace Snowboard_WEB4.Data.Mappers
                 .IsRequired(true)
                 .HasMaxLength(100);
 
+            builder.Property(g => g.Continent)
+                .IsRequired(true);
+               
             builder.Property(g => g.HoogteGebied)
                 .IsRequired(true);
 

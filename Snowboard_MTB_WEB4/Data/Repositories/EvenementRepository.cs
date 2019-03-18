@@ -30,12 +30,16 @@ namespace Snowboard_WEB4.Data.Repositories
 
         public IEnumerable<Evenement> GetAll()
         {
-            return _evenementen.OrderBy(e => e.Naam).ToList();
+            return _evenementen
+                .Include(e => e.Gebied)
+                .ToList();
         }
 
         public Evenement GetById(int id)
         {
-            return _evenementen.SingleOrDefault(e => e.Id == id);
+            return _evenementen
+                .Include(e => e.Gebied)
+                .SingleOrDefault(e => e.Id == id);
         }
 
         public void SaveChanges()

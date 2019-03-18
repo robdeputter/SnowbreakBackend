@@ -7,6 +7,9 @@ namespace Snowboard_MTB_WEB4.Model
 {
     public enum Continent
     {
-        NOORD_AMERIKA,ZUID_AMERIKA,EUROPA,AZIË,WERELD
+        NOORD_AMERIKA,
+        ZUID_AMERIKA,
+        EUROPA,AZIË,
+        WERELD
     }
 }
