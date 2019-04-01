@@ -17,11 +17,10 @@ namespace Snowboard_MTB_WEB4.Model
         public int HoogteGebied { get; set; }
         public Continent Continent { get; set; }
 
-        public ICollection<GebiedRanking> Rankings { get; set; }
 
         protected Gebied()
         {
-            Rankings = new List<GebiedRanking>();
+            
         }
 
         public Gebied(string naam, string land, Continent continent,string lengtegraad, string breedtegraad, int aantalKmPiste, int hoogteGebied)
@@ -33,12 +32,6 @@ namespace Snowboard_MTB_WEB4.Model
             Breedtegraad = breedtegraad;
             AantalKmPiste = aantalKmPiste;
             HoogteGebied = hoogteGebied;
-            Rankings = new List<GebiedRanking>();
-        }
-
-        public void AddRanking(GebiedRanking ranking)
-        {
-            Rankings.Add(ranking);
         }
 
     }

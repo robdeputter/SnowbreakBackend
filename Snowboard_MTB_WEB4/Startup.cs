@@ -15,6 +15,7 @@ using Snowboard_MTB_WEB4.Data;
 using Snowboard_MTB_WEB4.Model;
 using Snowboard_WEB4.Data;
 using Snowboard_WEB4.Data.Repositories;
+using Snowboard_WEB4.Model;
 
 namespace Snowboard_MTB_WEB4
 {
@@ -36,6 +37,7 @@ namespace Snowboard_MTB_WEB4
             services.AddScoped<SnowbreakDataInitializer>();
             services.AddScoped<IEvenementRepository, EvenementRepository>();
             services.AddScoped<IRankingRepository, RankingRepository>();
+            services.AddScoped<IGebiedRepository, GebiedRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddOpenApiDocument(c => {

@@ -14,7 +14,7 @@ namespace Snowboard_MTB_WEB4.Model
         public string Beschrijving { get; set; }
         public DateTime StartDatum { get; set; }
         public DateTime? EindDatum { get; set; }
-        public int NrOfDays { get; set; }
+        public int NrOfDays => EindDatum == null ? 1 : CountNumberOfDays(StartDatum, EindDatum.Value);
         public Gebied Gebied { get; set; }
 
         protected Evenement()
@@ -30,7 +30,7 @@ namespace Snowboard_MTB_WEB4.Model
             StartDatum = startDatum;
             EindDatum = eindDatum;
             Gebied = gebied;
-            NrOfDays = eindDatum == null ? 1 : CountNumberOfDays(StartDatum, EindDatum.Value);
+            //NrOfDays = eindDatum == null ? 1 : CountNumberOfDays(StartDatum, EindDatum.Value);
         }
         
         public int CountNumberOfDays(DateTime startDatum, DateTime eindDatum)

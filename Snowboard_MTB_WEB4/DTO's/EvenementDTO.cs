@@ -20,7 +20,10 @@ namespace Snowboard_WEB4.DTO_s
 
         public DateTime? EindDatum { get; set; }
 
+
         [Required]
-        public Gebied Gebied { get; set; }
+        public int gebiedID { get; set; }
+        //[Required]
+        //public Gebied Gebied { get; set; }
     }
 }

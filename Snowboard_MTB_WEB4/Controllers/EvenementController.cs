@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Snowboard_MTB_WEB4.Model;
 using Snowboard_WEB4.DTO_s;
+using Snowboard_WEB4.Model;
 
 namespace Snowboard_MTB_WEB4.Controllers
 {
@@ -15,10 +16,20 @@ namespace Snowboard_MTB_WEB4.Controllers
     public class EvenementController : ControllerBase
     {
         private readonly IEvenementRepository _evenementRepository;
+        private readonly IGebiedRepository _gebiedRepository;
 
-        public EvenementController(IEvenementRepository evenementRepository)
+        public EvenementController(IEvenementRepository evenementRepository, IGebiedRepository gebiedRepository)
         {
             _evenementRepository = evenementRepository;
+            _gebiedRepository = gebiedRepository;
+
+        }
+
+        [HttpGet]
+        public IEnumerable<Evenement> GetAll()
+        {
+            return _evenementRepository.GetAll();
+            
         }
 
         [HttpGet("{id}")]
@@ -35,8 +46,14 @@ namespace Snowboard_MTB_WEB4.Controllers
         [HttpPost]
         public ActionResult<Evenement> PostEvenement(EvenementDTO evenementDTO)
         {
+            Gebied gebied = _gebiedRepository.GetById(evenementDTO.gebiedID);
+            if(gebied == null)
+            {
+                return BadRequest();
+            }
+
             Evenement evenement = new Evenement(evenementDTO.Naam, evenementDTO.Beschrijving,
-                evenementDTO.StartDatum, evenementDTO?.EindDatum, evenementDTO.Gebied);
+                evenementDTO.StartDatum, evenementDTO?.EindDatum, gebied);
 
             _evenementRepository.Add(evenement);
             _evenementRepository.SaveChanges();

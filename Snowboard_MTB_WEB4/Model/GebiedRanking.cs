@@ -28,7 +28,7 @@ namespace Snowboard_WEB4.Model
             GebiedId = gebied.Id;
             RankingId = ranking.Id;
             Positie = positie;
-            gebied.AddRanking(this);
+            
         }
 
 

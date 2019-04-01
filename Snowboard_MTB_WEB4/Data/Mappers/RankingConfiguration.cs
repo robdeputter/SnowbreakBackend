@@ -20,6 +20,7 @@ namespace Snowboard_WEB4.Data.Mappers
                 .IsRequired(true)
                 .HasMaxLength(100);
 
+
             builder.Property(r => r.Continent)
                 .IsRequired(true);
         }

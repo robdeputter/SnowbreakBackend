@@ -32,7 +32,6 @@ namespace Snowboard_WEB4.Data.Repositories
         {
             return _evenementen
                 .Include(e => e.Gebied)
-                .ThenInclude(g => g.Rankings)
                 .ToList();
         }
 
@@ -40,7 +39,6 @@ namespace Snowboard_WEB4.Data.Repositories
         {
             return _evenementen
                 .Include(e => e.Gebied)
-                .ThenInclude(g => g.Rankings)
                 .SingleOrDefault(e => e.Id == id);
         }
 

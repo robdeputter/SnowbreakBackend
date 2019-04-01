@@ -31,8 +31,7 @@ namespace Snowboard_WEB4.Data.Mappers
             builder.Property(e => e.EindDatum)
                 .IsRequired(false);
 
-            builder.Property(e => e.NrOfDays)
-                .IsRequired(true);
+            
 
             //relaties
             builder.HasOne(e => e.Gebied)

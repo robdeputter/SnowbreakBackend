@@ -1,4 +1,5 @@
-﻿using Snowboard_WEB4.Model;
+﻿using Snowboard_WEB4.DTO_s;
+using Snowboard_WEB4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace Snowboard_MTB_WEB4.Model
         }
         public void RemoveGebied(Gebied gebied)
         {
-            Gebieden.Remove(Gebieden.SingleOrDefault(g => g.Gebied == gebied));
+            Gebieden.Remove(Gebieden.SingleOrDefault(g => g.GebiedId == gebied.Id));
         }
     }
 }

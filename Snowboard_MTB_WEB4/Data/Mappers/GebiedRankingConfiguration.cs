@@ -22,7 +22,7 @@ namespace Snowboard_WEB4.Data.Mappers
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(g => g.Gebied)
-                .WithMany(geb => geb.Rankings)
+                .WithMany()
                 .HasForeignKey(g => g.GebiedId)
                 .IsRequired(true)
                 .OnDelete(DeleteBehavior.Restrict);
