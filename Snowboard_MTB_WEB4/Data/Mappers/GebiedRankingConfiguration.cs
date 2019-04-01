@@ -15,11 +15,11 @@ namespace Snowboard_WEB4.Data.Mappers
             builder.ToTable("GebiedRanking");
             builder.HasKey(g => new { g.GebiedId, g.RankingId});
 
-            builder.HasOne(g => g.Ranking)
-                .WithMany(r => r.Gebieden)
-                .HasForeignKey(r => r.RankingId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(g => g.Ranking)
+            //    .WithMany(r => r.Gebieden)
+            //    .HasForeignKey(r => r.RankingId)
+            //    .IsRequired(true)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(g => g.Gebied)
                 .WithMany()

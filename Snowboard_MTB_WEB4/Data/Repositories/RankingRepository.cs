@@ -40,8 +40,7 @@ namespace Snowboard_WEB4.Data.Repositories
         public Ranking GetById(int id)
         {
             return _rankings
-                .Include(r => r.Gebieden)
-                .ThenInclude(ge => ge.Gebied)
+                .Include(r => r.Gebieden).ThenInclude(ge => ge.Gebied)
                 .SingleOrDefault(r => r.Id == id);
         }
 

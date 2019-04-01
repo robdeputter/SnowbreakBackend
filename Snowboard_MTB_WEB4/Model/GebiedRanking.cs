@@ -1,4 +1,5 @@
-﻿using Snowboard_MTB_WEB4.Model;
+﻿using Newtonsoft.Json;
+using Snowboard_MTB_WEB4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace Snowboard_WEB4.Model
         public int RankingId { get; set; }
         public int Positie { get; set; }
 
+        [JsonProperty]
         public Gebied Gebied { get; set; }
-        public Ranking Ranking { get; set; }
 
         protected GebiedRanking()
         {
@@ -23,7 +24,7 @@ namespace Snowboard_WEB4.Model
         public GebiedRanking(Gebied gebied, Ranking ranking, int positie)
         {
             Gebied = gebied;
-            Ranking = ranking;
+            
 
             GebiedId = gebied.Id;
             RankingId = ranking.Id;

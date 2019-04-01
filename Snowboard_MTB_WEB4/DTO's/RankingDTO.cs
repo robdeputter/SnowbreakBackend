@@ -17,6 +17,8 @@ namespace Snowboard_WEB4.DTO_s
         public Continent Continent { get; set; }
 
         //HIER MOET NOG IETS KOMEN VOOR GEBIEDEN!
-        
-    }
+        [Required]
+        public IEnumerable<Gebied> GebiedenRanking { get; set; }
+
+}
 }
