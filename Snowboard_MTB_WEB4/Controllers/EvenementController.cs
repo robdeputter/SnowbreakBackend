@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Snowboard_MTB_WEB4.Model;
@@ -22,7 +25,6 @@ namespace Snowboard_MTB_WEB4.Controllers
         {
             _evenementRepository = evenementRepository;
             _gebiedRepository = gebiedRepository;
-
         }
 
         [HttpGet]
@@ -43,6 +45,7 @@ namespace Snowboard_MTB_WEB4.Controllers
             return NotFound();
         }
 
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         public ActionResult<Evenement> PostEvenement(EvenementDTO evenementDTO)
         {
@@ -60,6 +63,7 @@ namespace Snowboard_MTB_WEB4.Controllers
             return CreatedAtAction(nameof(GetEvenement), new { id = evenement.Id }, evenement);
         }
 
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("{id}")]
         public IActionResult PutEvenement(int id, Evenement evenement)
         {
@@ -72,6 +76,7 @@ namespace Snowboard_MTB_WEB4.Controllers
             return NoContent();
         }
 
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpDelete("{id}")]
         public ActionResult<Evenement> DeleteEvenement(int id)
         {

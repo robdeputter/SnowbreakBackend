@@ -17,6 +17,7 @@ namespace Snowboard_MTB_WEB4.Data
         public DbSet<Ranking> Rankings { get; set; }
         public DbSet<Gebied> Gebieden { get; set; }
         public DbSet<GebiedRanking> GebiedRankings { get; set; }
+        public DbSet<Gebruiker> Gebruikers { get; set; }
 
         public SnowbreakDbContext(DbContextOptions<SnowbreakDbContext> options) : base(options)
         {
@@ -29,6 +30,7 @@ namespace Snowboard_MTB_WEB4.Data
             modelBuilder.ApplyConfiguration(new RankingConfiguration());
             modelBuilder.ApplyConfiguration(new GebiedRankingConfiguration());
             modelBuilder.ApplyConfiguration(new GebiedConfiguration());
+            modelBuilder.ApplyConfiguration(new GebruikerConfiguration());
             
         }
     }

@@ -23,7 +23,10 @@ namespace Snowboard_WEB4.DTO_s
 
         [Required]
         public int gebiedID { get; set; }
+
         //[Required]
         //public Gebied Gebied { get; set; }
+
+
     }
 }

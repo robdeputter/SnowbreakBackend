@@ -1,5 +1,6 @@
 ﻿using Snowboard_MTB_WEB4.Data;
 using Snowboard_MTB_WEB4.Model;
+using Snowboard_WEB4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace Snowboard_WEB4.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
+                //gebruikers
+                Gebruiker gebruiker = new Gebruiker("Rob", "De Putter", "robdeputter@hotmail.com");
+                gebruiker.IsAdmin = true;
+
                 //gebieden voor evenementen
                 Gebied sölden = new Gebied("Sölden", "Oostenrijk", Continent.EUROPA, "11.0076232", "46.9654937", 144, 3244);
                 Gebied whistler = new Gebied("Whistler", "Canada", Continent.NOORD_AMERIKA, "-122.957359", "50.116322", 200, 670);
