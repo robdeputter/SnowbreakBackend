@@ -9,6 +9,7 @@ namespace Snowboard_WEB4.Model
     public class Gebruiker
     {
 
+        #region Properties
         public int GebruikerId { get; set; }
 
         [Required]
@@ -21,7 +22,9 @@ namespace Snowboard_WEB4.Model
         public string Email { get; set; }
 
         public bool IsAdmin { get; set; }
+        #endregion
 
+        #region Constructors
         public Gebruiker()
         {
 
@@ -33,7 +36,8 @@ namespace Snowboard_WEB4.Model
             Familienaam = familienaam;
             Email = email;
             IsAdmin = false;
-        }
-        
+        } 
+        #endregion
+
     }
 }

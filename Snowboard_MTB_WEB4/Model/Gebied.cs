@@ -8,22 +8,102 @@ namespace Snowboard_MTB_WEB4.Model
 {
     public class Gebied
     {
+
+        #region Backing fields
+        private string _naam;
+        private string _land;
+        private string _lengtegraad;
+        private string _breedtegraad;
+        private int _aantalKmPiste;
+        private int _hoogteGebied;
+        #endregion
+
+        #region Properties
         public int Id { get; set; }
-        public string Naam { get; set; }
-        public string Land { get; set; }
-        public string LengteGraad { get; set; }
-        public string Breedtegraad { get; set; }
-        public int AantalKmPiste { get; set; }
-        public int HoogteGebied { get; set; }
+        public string Naam {
+            get {
+                return _naam;
+            }
+            set {
+                if (value == null)
+                {
+                    throw new ArgumentException("Naam mag niet leeg zijn!");
+                }
+                if (value.Length < 2)
+                {
+                    throw new ArgumentException("Naam moet minstens 2 karakters bevatten!");
+                }
+                _naam = value;
+
+            }
+        }
+        public string Land {
+            get {
+                return _land;  
+            }
+            set {
+                if(value == null)
+                {
+                    throw new ArgumentException("Land mag niet leeg zijn!");
+                }
+                if (value.Length < 2)
+                {
+                    throw new ArgumentException("Naam moet minstens 2 karakters bevatten!");
+                }
+                _land = value;
+
+            } }
+        public string LengteGraad {
+            get {
+                return _lengtegraad;
+            }
+            set {
+                _lengtegraad = value ?? throw new ArgumentException("Lengtegraad mag niet leeg zijn!");
+            }
+        }
+        public string Breedtegraad {
+            get {
+                return _breedtegraad;
+            }
+            set {
+                _breedtegraad = value ?? throw new ArgumentException("Breedtegraad mag niet leeg zijn!");
+            }
+        }
+        public int AantalKmPiste {
+            get {
+                return _aantalKmPiste;
+            }
+            set {
+                if(value <= 0)
+                {
+                    throw new ArgumentException("Het aantal km piste moet groter zijn dan 0!");
+                }
+                _aantalKmPiste = value;
+            }
+        }
+        public int HoogteGebied {
+            get {
+                return _hoogteGebied;
+            }
+            set {
+                if(value <= 0)
+                {
+                    throw new ArgumentException("Hoogte gebied moet groter zijn dan 0!");
+                }
+                _hoogteGebied = value;
+            }
+        }
         public Continent Continent { get; set; }
+        #endregion
 
 
+        #region Constructors
         protected Gebied()
         {
-            
+
         }
 
-        public Gebied(string naam, string land, Continent continent,string lengtegraad, string breedtegraad, int aantalKmPiste, int hoogteGebied)
+        public Gebied(string naam, string land, Continent continent, string lengtegraad, string breedtegraad, int aantalKmPiste, int hoogteGebied)
         {
             Naam = naam;
             Land = land;
@@ -32,7 +112,8 @@ namespace Snowboard_MTB_WEB4.Model
             Breedtegraad = breedtegraad;
             AantalKmPiste = aantalKmPiste;
             HoogteGebied = hoogteGebied;
-        }
+        } 
+        #endregion
 
     }
 }

@@ -11,14 +11,17 @@ namespace Snowboard_WEB4.DTO_s
     public class RankingDTO
     {
         //attributen
-        [Required]
+        [Required(ErrorMessage = "Naam is verplicht")]
+        [DataType(DataType.Text)]
+        [MinLength(2, ErrorMessage = "Naam moet minstens 2 karakters bevatten!")]
         public string Naam { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Continent is verplicht")]
         public Continent Continent { get; set; }
 
         //HIER MOET NOG IETS KOMEN VOOR GEBIEDEN!
-        [Required]
-        public IEnumerable<Gebied> GebiedenRanking { get; set; }
+        [Required(ErrorMessage = "Gebieden zijn verplicht")]
+        public IEnumerable<Gebied> Gebieden { get; set; }
 
 }
 }

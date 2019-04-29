@@ -19,6 +19,17 @@ namespace Snowboard_WEB4.Data.Repositories
             _context = context;
             _gebieden = context.Gebieden;
         }
+
+        public void Add(Gebied gebied)
+        {
+            _gebieden.Add(gebied);
+        }
+
+        public void Delete(Gebied gebied)
+        {
+            _gebieden.Remove(gebied);
+        }
+
         public IEnumerable<Gebied> GetAll()
         {
             return _gebieden.ToList();
@@ -27,6 +38,16 @@ namespace Snowboard_WEB4.Data.Repositories
         public Gebied GetById(int id)
         {
             return _gebieden.FirstOrDefault(gebied => gebied.Id == id);
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Update(Gebied gebied)
+        {
+            _gebieden.Update(gebied);
         }
     }
 }

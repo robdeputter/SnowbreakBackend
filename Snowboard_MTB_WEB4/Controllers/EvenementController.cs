@@ -31,7 +31,7 @@ namespace Snowboard_MTB_WEB4.Controllers
         public IEnumerable<Evenement> GetAll()
         {
             return _evenementRepository.GetAll();
-            
+
         }
 
         [HttpGet("{id}")]
@@ -49,31 +49,45 @@ namespace Snowboard_MTB_WEB4.Controllers
         [HttpPost]
         public ActionResult<Evenement> PostEvenement(EvenementDTO evenementDTO)
         {
-            Gebied gebied = _gebiedRepository.GetById(evenementDTO.gebiedID);
-            if(gebied == null)
+            try
             {
-                return BadRequest();
+                Gebied gebied = _gebiedRepository.GetById(evenementDTO.gebiedID);
+                if (gebied == null)
+                {
+                    return BadRequest();
+                }
+
+                Evenement evenement = new Evenement(evenementDTO.Naam, evenementDTO.Beschrijving,
+                    evenementDTO.StartDatum, evenementDTO?.EindDatum, gebied);
+
+                _evenementRepository.Add(evenement);
+                _evenementRepository.SaveChanges();
+                return CreatedAtAction(nameof(GetEvenement), new { id = evenement.Id }, evenement);
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
             }
-
-            Evenement evenement = new Evenement(evenementDTO.Naam, evenementDTO.Beschrijving,
-                evenementDTO.StartDatum, evenementDTO?.EindDatum, gebied);
-
-            _evenementRepository.Add(evenement);
-            _evenementRepository.SaveChanges();
-            return CreatedAtAction(nameof(GetEvenement), new { id = evenement.Id }, evenement);
         }
 
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("{id}")]
         public IActionResult PutEvenement(int id, Evenement evenement)
         {
-            if(id != evenement.Id)
+            try
             {
-                return BadRequest();
+                if (id != evenement.Id)
+                {
+                    return BadRequest();
+                }
+                _evenementRepository.Update(evenement);
+                _evenementRepository.SaveChanges();
+                return NoContent();
             }
-            _evenementRepository.Update(evenement);
-            _evenementRepository.SaveChanges();
-            return NoContent();
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -81,7 +95,7 @@ namespace Snowboard_MTB_WEB4.Controllers
         public ActionResult<Evenement> DeleteEvenement(int id)
         {
             Evenement evenement = _evenementRepository.GetById(id);
-            if(evenement == null)
+            if (evenement == null)
             {
                 return NotFound();
             }
@@ -92,6 +106,6 @@ namespace Snowboard_MTB_WEB4.Controllers
 
 
 
-        
+
     }
 }

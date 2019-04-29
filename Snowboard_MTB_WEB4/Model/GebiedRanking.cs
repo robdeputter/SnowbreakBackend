@@ -9,13 +9,17 @@ namespace Snowboard_WEB4.Model
 {
     public class GebiedRanking
     {
+        #region Properties
         public int GebiedId { get; set; }
         public int RankingId { get; set; }
-        public int Positie { get; set; }
-
+        public int Positie { get; set; } 
+      
         [JsonProperty]
         public Gebied Gebied { get; set; }
+        #endregion
 
+
+        #region Constructors
         protected GebiedRanking()
         {
 
@@ -24,13 +28,11 @@ namespace Snowboard_WEB4.Model
         public GebiedRanking(Gebied gebied, Ranking ranking, int positie)
         {
             Gebied = gebied;
-            
-
             GebiedId = gebied.Id;
             RankingId = ranking.Id;
             Positie = positie;
-            
-        }
+        } 
+        #endregion
 
 
     }

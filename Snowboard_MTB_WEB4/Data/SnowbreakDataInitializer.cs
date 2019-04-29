@@ -1,4 +1,5 @@
-﻿using Snowboard_MTB_WEB4.Data;
+﻿using Microsoft.AspNetCore.Identity;
+using Snowboard_MTB_WEB4.Data;
 using Snowboard_MTB_WEB4.Model;
 using Snowboard_WEB4.Model;
 using System;
@@ -11,13 +12,15 @@ namespace Snowboard_WEB4.Data
     public class SnowbreakDataInitializer
     {
         private SnowbreakDbContext _context;
+        private UserManager<IdentityUser> _userManager;
 
-        public SnowbreakDataInitializer(SnowbreakDbContext context)
+        public SnowbreakDataInitializer(SnowbreakDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        public void InitializeData()
+        public async Task InitializeData()
         {
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
@@ -62,17 +65,17 @@ namespace Snowboard_WEB4.Data
 
                 //evenementen
                 Evenement ninesAudi = new Evenement("9nines AUDI", "Jaarlijks evenement voor snowboarders en skiërs",
-                    new DateTime(2019, 04, 22), new DateTime(2019, 04, 27), sölden);
+                    new DateTime(2020, 04, 22), new DateTime(2020, 04, 27), sölden);
 
                 Evenement theBrits2019 = new Evenement("The Brits 2019", "The BRITS – Muziek & Winter Sportfestival met de Britse Snowboard en Freeski Championships",
-                    new DateTime(2019, 03, 31), new DateTime(2019, 04, 07), laax);
+                    new DateTime(2020, 03, 31), new DateTime(2020, 04, 07), laax);
 
                 Evenement worldSkiSnowboardFestival = new Evenement("World ski and snowboard festival 2019",
-                    "Het grootste wintersport en muziekfestival van Noord-Amerika!", new DateTime(2019, 04, 10),
-                    new DateTime(2019, 04, 14), whistler);
+                    "Het grootste wintersport en muziekfestival van Noord-Amerika!", new DateTime(2020, 04, 10),
+                    new DateTime(2020, 04, 14), whistler);
 
                 Evenement redBullRagnarok = new Evenement("Red Bull Ragnarok", "The world’s biggest Snow-Kite Race"
-                    , new DateTime(2019, 03, 04), new DateTime(2019, 04, 07), haugastøl);
+                    , new DateTime(2020, 03, 04), new DateTime(2020, 04, 07), haugastøl);
 
                 Evenement winterOlympics = new Evenement("2022 Winter Olympics", "The 2022 Winter Olympics, also known as XXIV Olympic Winter Games will be the 24th winter multi-sports event by IOC.",
                                                 new DateTime(2022, 02, 04), new DateTime(2022, 02, 20), beijing);
@@ -105,9 +108,24 @@ namespace Snowboard_WEB4.Data
                 _context.Evenements.Add(worldSkiSnowboardFestival);
                 _context.Evenements.Add(redBullRagnarok);
                 _context.Evenements.Add(winterOlympics);
+
+                //USERS
+                Gebruiker administrator = new Gebruiker("Rob", "De Putter", "robdeputter@hotmail.com");
+                administrator.IsAdmin = true;
+                _context.Gebruikers.Add(administrator);
+                await CreateUser(administrator.Email, "P@ssword1111");
+
+                Gebruiker tim = new Gebruiker("Tim", "Geldof", "timgeldof@hotmail.com");
+                _context.Gebruikers.Add(tim);
+                await CreateUser(administrator.Email,"P@ssword1111");
                 
                 _context.SaveChanges();
             }
+        }
+        private async Task CreateUser(string email, string password)
+        {
+            var user = new IdentityUser { UserName = email, Email = email };
+            await _userManager.CreateAsync(user, password);
         }
 
     }

@@ -11,5 +11,9 @@ namespace Snowboard_WEB4.Model
 
         IEnumerable<Gebied> GetAll();
         Gebied GetById(int id);
+        void Add(Gebied gebied);
+        void Delete(Gebied gebied);
+        void SaveChanges();
+        void Update(Gebied gebied);
     }
 }

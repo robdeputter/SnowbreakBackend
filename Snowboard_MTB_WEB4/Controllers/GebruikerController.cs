@@ -12,11 +12,11 @@ namespace Snowboard_WEB4.Controllers
     [ApiController]
     public class GebruikerController : ControllerBase
     {
-        public IGebruikerRepository _gebruikerRepository;
+        private readonly IGebruikerRepository _gebruikerRepository;
 
         public GebruikerController(IGebruikerRepository gebruikerRepository)
         {
-            gebruikerRepository = _gebruikerRepository;
+            _gebruikerRepository = gebruikerRepository;
         }
 
         [HttpGet]

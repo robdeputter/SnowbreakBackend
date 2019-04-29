@@ -21,6 +21,12 @@ namespace Snowboard_MTB_WEB4.Controllers
             _rankingRepository = rankingRepository;
         }
 
+        [HttpGet]
+        public ActionResult<IEnumerable<Ranking>> GetRankings()
+        {
+            return _rankingRepository.GetAll().ToList();
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Ranking> GetRanking(int id)
         {
@@ -35,11 +41,19 @@ namespace Snowboard_MTB_WEB4.Controllers
         [HttpPost]
         public ActionResult<Ranking> PostRanking(RankingDTO rankingDTO)
         {
-            Ranking ranking = new Ranking(rankingDTO.Naam, rankingDTO.Continent);
+            try
+            {
+                Ranking ranking = new Ranking(rankingDTO.Naam, rankingDTO.Continent);
 
-            _rankingRepository.Add(ranking);
-            _rankingRepository.SaveChanges();
-            return CreatedAtAction(nameof(GetRanking), new { id = ranking.Id }, ranking);
+                _rankingRepository.Add(ranking);
+                _rankingRepository.SaveChanges();
+                return CreatedAtAction(nameof(GetRanking), new { id = ranking.Id }, ranking);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpPut("{id}")]

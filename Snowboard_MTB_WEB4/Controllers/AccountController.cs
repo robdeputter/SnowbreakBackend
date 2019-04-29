@@ -42,18 +42,17 @@ namespace Snowboard_WEB4.Controllers
         {
             var user = await _userManager.FindByNameAsync(model.Email); if (user != null)
             {
-                var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false); if (result.Succeeded)
+                var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
+                if (result.Succeeded)
                 {
                     string token = GetToken(user);
                     return Created("", token); //returns only the token
-
                 }
-
             }
             return BadRequest();
         }
 
-        private String GetToken(IdentityUser user)
+        private string GetToken(IdentityUser user)
         {      // Createthetoken
             var claims = new[]       {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
@@ -68,14 +67,17 @@ namespace Snowboard_WEB4.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<ActionResult<String>> Register(RegisterDTO model)
+        public async Task<ActionResult<string>> Register(RegisterDTO model)
         {
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
             Gebruiker gebruiker = new Gebruiker{ Email = model.Email, Voornaam = model.FirstName, Familienaam = model.LastName };
-            var result = await _userManager.CreateAsync(user, model.Password); if (result.Succeeded)
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
             {
                 _gebruikerRepository.Add(gebruiker);
-                _gebruikerRepository.SaveChanges(); string token = GetToken(user); return Created("", token);
+                _gebruikerRepository.SaveChanges();
+                string token = GetToken(user);
+                return Created("", token);
             }
             return BadRequest();
         }

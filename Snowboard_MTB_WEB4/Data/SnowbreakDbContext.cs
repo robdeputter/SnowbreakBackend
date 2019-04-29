@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Snowboard_MTB_WEB4.Model;
 using Snowboard_WEB4.Data.Mappers;
 using Snowboard_WEB4.Model;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Snowboard_MTB_WEB4.Data
 {
-    public class SnowbreakDbContext : DbContext
+    public class SnowbreakDbContext : IdentityDbContext
 
     {
 
@@ -23,14 +24,14 @@ namespace Snowboard_MTB_WEB4.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new EvenementConfiguration());
-            modelBuilder.ApplyConfiguration(new RankingConfiguration());
-            modelBuilder.ApplyConfiguration(new GebiedRankingConfiguration());
-            modelBuilder.ApplyConfiguration(new GebiedConfiguration());
-            modelBuilder.ApplyConfiguration(new GebruikerConfiguration());
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new EvenementConfiguration());
+            builder.ApplyConfiguration(new RankingConfiguration());
+            builder.ApplyConfiguration(new GebiedRankingConfiguration());
+            builder.ApplyConfiguration(new GebiedConfiguration());
+            builder.ApplyConfiguration(new GebruikerConfiguration());
             
         }
     }
