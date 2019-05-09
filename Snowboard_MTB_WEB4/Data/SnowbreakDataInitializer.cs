@@ -49,16 +49,7 @@ namespace Snowboard_WEB4.Data
 
                 //ranking Europa
                 Ranking rankingEuropa = new Ranking("Top 10 Europa", Continent.EUROPA);
-                rankingEuropa.AddGebied(brixenTal,1);
-                rankingEuropa.AddGebied(valDisère,2);
-                rankingEuropa.AddGebied(laax,3);
-                rankingEuropa.AddGebied(lesTroisVallées, 4);
-                rankingEuropa.AddGebied(silvrettArenaIschgl, 5);
-                rankingEuropa.AddGebied(serfausFissLadis, 6);
-                rankingEuropa.AddGebied(hochZillertalHochfügen, 7);
-                rankingEuropa.AddGebied(breuilCervinia, 8);
-                rankingEuropa.AddGebied(lesQuatreVallées, 9);
-                rankingEuropa.AddGebied(valGardena, 10);
+                
 
 
 
@@ -98,6 +89,17 @@ namespace Snowboard_WEB4.Data
                 _context.Gebieden.Add(breuilCervinia);
                 _context.Gebieden.Add(lesQuatreVallées);
                 _context.Gebieden.Add(valGardena);
+
+                rankingEuropa.AddGebied(brixenTal, 1);
+                rankingEuropa.AddGebied(valDisère, 2);
+                rankingEuropa.AddGebied(laax, 3);
+                rankingEuropa.AddGebied(lesTroisVallées, 4);
+                rankingEuropa.AddGebied(silvrettArenaIschgl, 5);
+                rankingEuropa.AddGebied(serfausFissLadis, 6);
+                rankingEuropa.AddGebied(hochZillertalHochfügen, 7);
+                rankingEuropa.AddGebied(breuilCervinia, 8);
+                rankingEuropa.AddGebied(lesQuatreVallées, 9);
+                rankingEuropa.AddGebied(valGardena, 10);
 
                 //ranking europa
                 _context.Rankings.Add(rankingEuropa);

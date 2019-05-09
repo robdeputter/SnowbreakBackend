@@ -37,8 +37,16 @@ namespace Snowboard_WEB4.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet("checkusername")]
+        public async Task<ActionResult<Boolean>> CheckAvailableUserName(string email)
+        {
+            var user = await _userManager.FindByNameAsync(email);
+            return user == null;
+        }
+
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<String>> CreateToken(LoginDTO model)
+        public async Task<ActionResult<string>> CreateToken(LoginDTO model)
         {
             var user = await _userManager.FindByNameAsync(model.Email); if (user != null)
             {

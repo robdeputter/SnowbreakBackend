@@ -10,8 +10,13 @@ namespace Snowboard_WEB4.Model
     public class GebiedRanking
     {
         #region Properties
+
+        [JsonIgnore]
         public int GebiedId { get; set; }
+        [JsonIgnore]
         public int RankingId { get; set; }
+
+        [JsonProperty]
         public int Positie { get; set; } 
       
         [JsonProperty]
