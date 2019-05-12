@@ -10,7 +10,6 @@ namespace Snowboard_MTB_WEB4.Model
     public class Ranking
     {
         private string _naam;
-        private ICollection<GebiedRanking> _gebieden;
 
         #region Properties
         public int Id { get; set; }
@@ -33,15 +32,7 @@ namespace Snowboard_MTB_WEB4.Model
 
 
         #region Relaties
-        public ICollection<GebiedRanking> Gebieden {
-            get { return _gebieden; }
-            set {
-                if(value != null)
-                {
-                    _gebieden = value.OrderBy(g => g.Positie).ToList();
-                }
-            }
-        }
+        public IList<GebiedRanking> Gebieden{ get; set; }
         #endregion
 
         #region Constructors
@@ -55,7 +46,6 @@ namespace Snowboard_MTB_WEB4.Model
             Naam = naam;
             Continent = continent;
             Gebieden = new List<GebiedRanking>();
-
         }
         #endregion
 

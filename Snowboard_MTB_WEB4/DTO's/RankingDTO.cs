@@ -21,7 +21,7 @@ namespace Snowboard_WEB4.DTO_s
 
         //HIER MOET NOG IETS KOMEN VOOR GEBIEDEN!
         [Required(ErrorMessage = "Gebieden zijn verplicht")]
-        public IEnumerable<Gebied> Gebieden { get; set; }
+        public IEnumerable<GebiedRankingDTO> Gebieden { get; set; }
 
 }
 }
