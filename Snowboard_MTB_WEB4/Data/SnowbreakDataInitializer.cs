@@ -30,25 +30,25 @@ namespace Snowboard_WEB4.Data
                 gebruiker.IsAdmin = true;
 
                 //gebieden voor evenementen
-                Gebied sölden = new Gebied("Sölden", "Oostenrijk", Continent.EUROPA, "11.0076232", "46.9654937", 144, 3244);
-                Gebied whistler = new Gebied("Whistler", "Canada", Continent.NOORD_AMERIKA, "-122.957359", "50.116322", 200, 670);
-                Gebied haugastøl = new Gebied("Haugastøl", "Noorwegen", Continent.EUROPA, "7.867799", "60.511639", 50, 592);
-                Gebied beijing = new Gebied("Beijing", "China", Continent.AZIË, "116.363625", "39.913818", 50, 820);
+                Gebied sölden = new Gebied("Sölden", "Oostenrijk", Continent.EUROPA, 11.0076232, 46.9654937, 144, 3244);
+                Gebied whistler = new Gebied("Whistler", "Canada", Continent.NOORD_AMERIKA, -122.957359, 50.116322, 200, 670);
+                Gebied haugastøl = new Gebied("Haugastøl", "Noorwegen", Continent.EUROPA, 7.867799, 60.511639, 50, 592);
+                Gebied beijing = new Gebied("Beijing", "China", Continent.AZIË, 116.363625, 39.913818, 50, 820);
 
                 //top 10 europa
-                Gebied brixenTal = new Gebied("Brixental", "Oostenrijk", Continent.EUROPA, "12.190926", "47.503113", 284, 1860);
-                Gebied valDisère = new Gebied("Val d'Isère", "Frankrijk", Continent.EUROPA, "6.979605", "45.446912", 300, 3456);
-                Gebied laax = new Gebied("Laax", "Zwitserland", Continent.EUROPA, "9.265110", "46.823930", 188, 1016);
-                Gebied lesTroisVallées = new Gebied("Les Trois Vallées", "Frankrijk", Continent.EUROPA, "6.525255", "45.484036", 600, 3230);
-                Gebied silvrettArenaIschgl = new Gebied("Silvretta Arena Ischgl - Samnaun", "Oostenrijk", Continent.EUROPA, "10.288000", "47.010023", 239, 2872);
-                Gebied serfausFissLadis = new Gebied("Serfaus - Fiss - Ladis", "Oostenrijk", Continent.EUROPA, "10.607579", "47.038905", 198, 2820);
-                Gebied hochZillertalHochfügen = new Gebied("Hochzillertal - Hochfügen", "Oostenrijk", Continent.EUROPA, "11.873215", "47.289957", 85, 2378);
-                Gebied breuilCervinia = new Gebied("Breuil-Cervinia", "Italië", Continent.EUROPA, "7.629142", "45.933559", 322, 3899);
-                Gebied lesQuatreVallées = new Gebied("Les Quatre Vallées", "Frankrijk", Continent.EUROPA, "45.914507", "6.131787", 412, 3330);
-                Gebied valGardena = new Gebied("Val Gardena", "Italië", Continent.EUROPA, "11.724774", "46.570590", 175, 2518);
+                Gebied brixenTal = new Gebied("Brixental", "Oostenrijk", Continent.EUROPA, 12.190926, 47.503113, 284, 1860);
+                Gebied valDisère = new Gebied("Val d'Isère", "Frankrijk", Continent.EUROPA, 6.979605, 45.446912, 300, 3456);
+                Gebied laax = new Gebied("Laax", "Zwitserland", Continent.EUROPA, 9.265110, 46.823930, 188, 1016);
+                Gebied lesTroisVallées = new Gebied("Les Trois Vallées", "Frankrijk", Continent.EUROPA, 6.525255, 45.484036, 600, 3230);
+                Gebied silvrettArenaIschgl = new Gebied("Silvretta Arena Ischgl - Samnaun", "Oostenrijk", Continent.EUROPA, 10.288000, 47.010023, 239, 2872);
+                Gebied serfausFissLadis = new Gebied("Serfaus - Fiss - Ladis", "Oostenrijk", Continent.EUROPA, 10.607579, 47.038905, 198, 2820);
+                Gebied hochZillertalHochfügen = new Gebied("Hochzillertal - Hochfügen", "Oostenrijk", Continent.EUROPA, 11.873215, 47.289957, 85, 2378);
+                Gebied breuilCervinia = new Gebied("Breuil-Cervinia", "Italië", Continent.EUROPA, 7.629142, 45.933559, 322, 3899);
+                Gebied lesQuatreVallées = new Gebied("Les Quatre Vallées", "Frankrijk", Continent.EUROPA, 45.914507, 6.131787, 412, 3330);
+                Gebied valGardena = new Gebied("Val Gardena", "Italië", Continent.EUROPA, 11.724774, 46.570590, 175, 2518);
 
                 //ranking Europa
-                Ranking rankingEuropa = new Ranking("Top 10 Europa", Continent.EUROPA);
+                Ranking rankingEuropa = new Ranking("Top 10 Europa");
                 
 
 

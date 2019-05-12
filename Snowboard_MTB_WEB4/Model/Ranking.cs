@@ -27,7 +27,7 @@ namespace Snowboard_MTB_WEB4.Model
                 }
                 _naam = value;
             } }
-        public Continent Continent { get; set; }
+        //public Continent Continent { get; set; }
         #endregion
 
 
@@ -41,10 +41,10 @@ namespace Snowboard_MTB_WEB4.Model
             Gebieden = new List<GebiedRanking>();
         }
 
-        public Ranking(string naam, Continent continent)
+        public Ranking(string naam)
         {
             Naam = naam;
-            Continent = continent;
+            //Continent = continent;
             Gebieden = new List<GebiedRanking>();
         }
         #endregion

@@ -47,7 +47,7 @@ namespace Snowboard_MTB_WEB4.Controllers
         {
             try
             {
-                Ranking ranking = new Ranking(rankingDTO.Naam, rankingDTO.Continent);
+                Ranking ranking = new Ranking(rankingDTO.Naam);
                 if(rankingDTO.Gebieden.Count() != 0)
                 {
                     rankingDTO.Gebieden.ToList().ForEach(gebiedRankingDTO =>

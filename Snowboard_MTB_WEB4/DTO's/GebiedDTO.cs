@@ -28,12 +28,12 @@ namespace Snowboard_WEB4.DTO_s
         [Required(ErrorMessage = "Lengtegraad is verplicht!")]
         [DataType(DataType.Text)]
         [MinLength(2, ErrorMessage = "Lengtegraad moet minstens 2 karakters bevatten!")]
-        public string Lengtegraad { get; set; }
+        public double Lengtegraad { get; set; }
 
         [Required(ErrorMessage = "Breedtegraad is verplicht!")]
         [DataType(DataType.Text)]
         [MinLength(2, ErrorMessage = "Breedtegraad moet minstens 2 karakters bevatten!")]
-        public string Breedtegraad { get; set; }
+        public double Breedtegraad { get; set; }
 
         [Required(ErrorMessage = "Aantal km piste is verplicht!")]
         [Range(0, int.MaxValue, ErrorMessage = "Aantal km piste moet meer dan 0 zijn!")]

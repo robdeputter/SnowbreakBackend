@@ -16,8 +16,8 @@ namespace Snowboard_WEB4.DTO_s
         [MinLength(2, ErrorMessage = "Naam moet minstens 2 karakters bevatten!")]
         public string Naam { get; set; }
 
-        [Required(ErrorMessage = "Continent is verplicht")]
-        public Continent Continent { get; set; }
+        //[Required(ErrorMessage = "Continent is verplicht")]
+        //public Continent Continent { get; set; }
 
         //HIER MOET NOG IETS KOMEN VOOR GEBIEDEN!
         [Required(ErrorMessage = "Gebieden zijn verplicht")]

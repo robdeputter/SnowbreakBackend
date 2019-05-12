@@ -12,8 +12,8 @@ namespace Snowboard_MTB_WEB4.Model
         #region Backing fields
         private string _naam;
         private string _land;
-        private string _lengtegraad;
-        private string _breedtegraad;
+        private double _lengtegraad;
+        private double _breedtegraad;
         private int _aantalKmPiste;
         private int _hoogteGebied;
         #endregion
@@ -53,20 +53,20 @@ namespace Snowboard_MTB_WEB4.Model
                 _land = value;
 
             } }
-        public string LengteGraad {
+        public double LengteGraad {
             get {
                 return _lengtegraad;
             }
             set {
-                _lengtegraad = value ?? throw new ArgumentException("Lengtegraad mag niet leeg zijn!");
+                _lengtegraad = value;
             }
         }
-        public string Breedtegraad {
+        public double Breedtegraad {
             get {
                 return _breedtegraad;
             }
             set {
-                _breedtegraad = value ?? throw new ArgumentException("Breedtegraad mag niet leeg zijn!");
+                _breedtegraad = value;
             }
         }
         public int AantalKmPiste {
@@ -103,7 +103,7 @@ namespace Snowboard_MTB_WEB4.Model
 
         }
 
-        public Gebied(string naam, string land, Continent continent, string lengtegraad, string breedtegraad, int aantalKmPiste, int hoogteGebied)
+        public Gebied(string naam, string land, Continent continent, double lengtegraad, double breedtegraad, int aantalKmPiste, int hoogteGebied)
         {
             Naam = naam;
             Land = land;
