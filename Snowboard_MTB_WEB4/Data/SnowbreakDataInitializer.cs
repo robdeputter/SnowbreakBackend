@@ -44,7 +44,7 @@ namespace Snowboard_WEB4.Data
                 Gebied serfausFissLadis = new Gebied("Serfaus - Fiss - Ladis", "Oostenrijk", Continent.EUROPA, 10.607579, 47.038905, 198, 2820);
                 Gebied hochZillertalHochfügen = new Gebied("Hochzillertal - Hochfügen", "Oostenrijk", Continent.EUROPA, 11.873215, 47.289957, 85, 2378);
                 Gebied breuilCervinia = new Gebied("Breuil-Cervinia", "Italië", Continent.EUROPA, 7.629142, 45.933559, 322, 3899);
-                Gebied lesQuatreVallées = new Gebied("Les Quatre Vallées", "Frankrijk", Continent.EUROPA, 45.914507, 6.131787, 412, 3330);
+                Gebied lesQuatreVallées = new Gebied("Les Quatre Vallées", "Frankrijk", Continent.EUROPA, 6.131787, 45.914507, 412, 3330);
                 Gebied valGardena = new Gebied("Val Gardena", "Italië", Continent.EUROPA, 11.724774, 46.570590, 175, 2518);
 
                 //ranking Europa
