@@ -13,6 +13,7 @@ using Snowboard_WEB4.Model;
 
 namespace Snowboard_MTB_WEB4.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
@@ -26,14 +27,14 @@ namespace Snowboard_MTB_WEB4.Controllers
             _evenementRepository = evenementRepository;
             _gebiedRepository = gebiedRepository;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<Evenement> GetAll()
         {
             return _evenementRepository.GetAll();
 
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<Evenement> GetEvenement(int id)
         {

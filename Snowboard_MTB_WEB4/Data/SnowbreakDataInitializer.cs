@@ -119,7 +119,11 @@ namespace Snowboard_WEB4.Data
 
                 Gebruiker tim = new Gebruiker("Tim", "Geldof", "timgeldof@hotmail.com");
                 _context.Gebruikers.Add(tim);
-                await CreateUser(administrator.Email,"P@ssword1111");
+                await CreateUser(tim.Email,"P@ssword1111");
+
+                Gebruiker web4 = new Gebruiker("Web4", "WebApplicaties", "web4@hogent.be");
+                _context.Gebruikers.Add(web4);
+                await CreateUser(web4.Email, "P@ssword1111");
                 
                 _context.SaveChanges();
             }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Snowboard_MTB_WEB4.Model;
@@ -10,6 +12,7 @@ using Snowboard_WEB4.Model;
 
 namespace Snowboard_MTB_WEB4.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
@@ -23,14 +26,14 @@ namespace Snowboard_MTB_WEB4.Controllers
             _rankingRepository = rankingRepository;
             _gebiedRepository = gebiedRepository;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<IEnumerable<Ranking>> GetRankings()
         {
             return _rankingRepository.GetAll().ToList();
         } 
 
-        
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<Ranking> GetRanking(int id)
         {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Snowboard_MTB_WEB4.Model;
@@ -10,6 +12,7 @@ using Snowboard_WEB4.Model;
 
 namespace Snowboard_WEB4.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class GebiedController : ControllerBase
@@ -20,14 +23,14 @@ namespace Snowboard_WEB4.Controllers
         {
             _gebiedRepository = gebiedRepository;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<Gebied> GetAll()
         {
             return _gebiedRepository.GetAll();
 
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<Gebied> GetGebied(int id)
         {
@@ -39,7 +42,7 @@ namespace Snowboard_WEB4.Controllers
             return NotFound();
         }
 
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        
         [HttpPost]
         public ActionResult<Gebied> PostGebied(GebiedDTO gebiedDTO)
         {
