@@ -18,10 +18,15 @@ namespace Snowboard_WEB4.Controllers
     public class GebiedController : ControllerBase
     {
         private readonly IGebiedRepository _gebiedRepository;
+        private readonly IEvenementRepository _evenementRepository;
+        private readonly IRankingRepository _rankingRepository;
 
-        public GebiedController(IGebiedRepository gebiedRepository)
+        public GebiedController(IGebiedRepository gebiedRepository, IEvenementRepository evenementRepository
+            , IRankingRepository rankingRepository)
         {
             _gebiedRepository = gebiedRepository;
+            _evenementRepository = evenementRepository;
+            _rankingRepository = rankingRepository;
         }
         [AllowAnonymous]
         [HttpGet]
@@ -42,7 +47,7 @@ namespace Snowboard_WEB4.Controllers
             return NotFound();
         }
 
-        
+
         [HttpPost]
         public ActionResult<Gebied> PostGebied(GebiedDTO gebiedDTO)
         {
@@ -87,13 +92,33 @@ namespace Snowboard_WEB4.Controllers
         public ActionResult<Gebied> DeleteGebied(int id)
         {
             Gebied gebied = _gebiedRepository.GetById(id);
+            bool gebiedInRanking = false;
             if (gebied == null)
             {
                 return NotFound();
             }
-            _gebiedRepository.Delete(gebied);
-            _gebiedRepository.SaveChanges();
-            return gebied;
+            _rankingRepository.GetAll().ToList().ForEach(ranking =>
+            {
+                if (ranking.Gebieden.FirstOrDefault(gebiedr => gebiedr.GebiedId == id) != null)
+                {
+                    gebiedInRanking = true;
+                }
+            });
+
+            if (_evenementRepository.GetAll().FirstOrDefault(evenement => evenement.Gebied.Id == id) != null || gebiedInRanking)
+            {
+                return BadRequest();
+            }
+
+           
+            
+            else
+            {
+                _gebiedRepository.Delete(gebied);
+                _gebiedRepository.SaveChanges();
+                return gebied;
+            }
+            
         }
     }
 }
